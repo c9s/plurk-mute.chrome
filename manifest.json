@@ -4,6 +4,10 @@
   "description": "",
   "options_page": "options.html",
   "background_page": "background.html",
+  "browser_action": {
+      "default_icon": "icon.png",
+      "popup": "popup.html"
+  },
   "content_scripts": [{
       "matches": [ "http://www.plurk.com/*" ],
       "js": [ 

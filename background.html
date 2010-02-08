@@ -6,6 +6,13 @@ function main() {
             var keywords = localStorage[ 'mute_keywords' ];
             sendResponse( {  keywords: keywords } );
         }
+        else if( request.type == 'addKeyword' ) {
+            var k = localStorage[ 'mute_keywords' ];
+            var k = k.split( /\s*,\s*/ );
+            k.push( request.value.split( /\s*,\s*/ ) );
+            localStorage['mute_keywords'] = k.join(',');
+            sendResponse( { success: 1 } );
+        }
      }
     );
 }

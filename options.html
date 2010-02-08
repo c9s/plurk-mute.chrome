@@ -18,6 +18,7 @@ function save_options() {
 // Restores select box state to saved value from localStorage.
 function restore_options() {
   var k = localStorage["mute_keywords"];
+  console.debug( k );
   if (!k) {
     return;
   }
@@ -27,7 +28,7 @@ function restore_options() {
     <body onload="restore_options()">
 
     Mute Keywords:
-    <input type="text" size="20" value="keyword1, keyword2" id="mute_keywords">
+    <input type="text" size="20" value="" id="mute_keywords">
     <button onclick="save_options()">Save</button>        
 
     <div id="status"></div>
