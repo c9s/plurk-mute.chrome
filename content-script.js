@@ -20,14 +20,13 @@ function set_mute(pid,v) {
 
 chrome.extension.sendRequest({ type: 'getKeywords' }, function(response) {
     keywords = response.keywords;
-    if( ! keywords ) {
-        keywords = "";
-    }
-    keywords = keywords.split( /\s*,\s*/ );
-    for(i in keywords) {
-      var k=keywords[i];
-      if(k[0] == '/')
-            keywords[i] = eval( keywords[i] );
+    if( keywords ) {
+        keywords = keywords.split( /\s*,\s*/ );
+        for(i in keywords) {
+            var k=keywords[i];
+            if(k[0] == '/')
+                    keywords[i] = eval( keywords[i] );
+        }
     }
 });
 
