@@ -1,0 +1,42 @@
+<script type="text/javascript" charset="utf-8">
+    function addKeyword() {
+        var input = document.getElementById( 'keyword' );
+        console.log( input.value );
+        chrome.extension.sendRequest({ type: 'addKeyword' , value: input.value }, function(response) {
+            if( response.success ) {
+                var status = document.getElementById('status');
+                status.innerHTMl = "Added";
+                setTimeout(function(){
+                status.innerHTML = ""; }, 1000 );
+                updateKeyword();
+            }
+        });
+        input.value = '';
+    }
+
+    function clearKeyword() {
+        localStorage[ 'mute_keywords' ] = '';
+        updateKeyword();
+    }
+
+    function updateKeyword() {
+        document.getElementById('current').innerHTML = localStorage[ 'mute_keywords' ];
+    }
+</script>
+<body onload=" updateKeyword();">
+<div style="width: 200px;">
+<div style="height: 20px; vertical-align: middle; margin-bottom: 10px; ">
+    <img src="icon.png" align="left"/>
+    Plurk-Mute
+</div>
+<form>
+    Add Mute Keyword: <br/>
+    <input type="text" id="keyword"/>
+    <input type="button" value="Add" onclick=" addKeyword()"/>
+    <input type="button" value="Clear All" onclick=" clearKeyword()"/>
+</form>
+Current Keywords: 
+<div id="current" style="margin:3px; background: #ddd; font-family: Monaco,Monospace,Courier New; font-size: 12px;"></div>
+<div id="status"></div>
+</div>
+</body>
