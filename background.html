@@ -1,0 +1,15 @@
+
+
+<script type="text/javascript">
+    chrome.extension.onRequest.addListener(
+     function(request, sender, sendResponse) {
+        if( request.type == 'getKeywords' ) {
+            var keywords = localStorage[ 'mute_keywords' ];
+            sendResponse( {  keywords: keywords } );
+        }
+     }
+    );
+</script>
+
+
+

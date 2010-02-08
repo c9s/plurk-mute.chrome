@@ -1,0 +1,36 @@
+<html>
+<script type="text/javascript" charset="utf-8">
+
+// Saves options to localStorage.
+function save_options() {
+  var k = document.getElementById("mute_keywords");
+  localStorage["mute_keywords"] = k.value;
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options Saved.";
+  setTimeout(function() {
+        status.innerHTML = "";
+  },
+  750);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var k = localStorage["mute_keywords"];
+  if (!k) {
+    return;
+  }
+  document.getElementById("mute_keywords").value = k;
+}
+</script>
+    <body onload="restore_options()">
+
+    Mute Keywords:
+    <input type="text" size="20" value="keyword1, keyword2" id="mute_keywords">
+    <button onclick="save_options()">Save</button>        
+
+    <div id="status"></div>
+
+    </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Plurk-Mute",
+  "version": "1.0",
+  "description": "",
+  "options_page": "options.html",
+  "background_page": "background.html",
+  "content_scripts": [{
+      "matches": [ "http://www.plurk.com/*" ],
+      "js": [ 
+          "jquery.min.js",
+          "content-script.js"
+              ]
+  }],
+  "permissions": [ "tabs" ]
+}
